@@ -2,7 +2,7 @@
 
 A lead capture web app built with Next.js (App Router), TypeScript, Tailwind CSS, and Supabase. Visitors can submit a lead form; submissions are persisted in Supabase and forwarded to a webhook endpoint server-side.
 
-**Live app:** _coming soon (Vercel URL here after deployment)_
+**Live app:** [lead-capture-snowy.vercel.app](https://lead-capture-snowy.vercel.app)
 **Repo:** [github.com/Arbiter09/Lead-Capture](https://github.com/Arbiter09/Lead-Capture)
 
 ---

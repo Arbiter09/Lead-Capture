@@ -7,8 +7,7 @@ export const leadSchema = z.object({
   email: z.string().min(1, "Email is required").email("Please enter a valid email address"),
   company: z.string().optional(),
   source: z.enum(SOURCE_OPTIONS, {
-    required_error: "Please select how you heard about us",
-    invalid_type_error: "Please select how you heard about us",
+    error: "Please select how you heard about us",
   }),
   message: z.string().optional(),
 });

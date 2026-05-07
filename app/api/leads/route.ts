@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import { leadSchema } from "@/lib/validations";
+import { waitUntil } from "@vercel/functions";
+import { leadSchema, type LeadInput } from "@/lib/validations";
 import { supabaseServer } from "@/lib/supabase-server";
 
 export async function POST(req: Request) {
@@ -37,5 +38,33 @@ export async function POST(req: Request) {
     );
   }
 
+  waitUntil(fireWebhook(parsed.data));
   return NextResponse.json({ success: true }, { status: 201 });
+}
+
+async function fireWebhook(data: LeadInput): Promise<void> {
+  const webhookUrl = process.env.WEBHOOK_URL;
+  if (!webhookUrl) {
+    console.error("[webhook] WEBHOOK_URL env var is not set");
+    return;
+  }
+
+  try {
+    const res = await fetch(webhookUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Candidate-Name": "Jas Shah",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!res.ok) {
+      console.error(
+        `[webhook] non-2xx response: ${res.status} ${res.statusText}`
+      );
+    }
+  } catch (err) {
+    console.error("[webhook] network failure:", err);
+  }
 }

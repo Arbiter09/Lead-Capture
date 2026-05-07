@@ -96,9 +96,9 @@ export default function LeadForm() {
   if (formState === "success") {
     return (
       <div className="flex flex-col items-center gap-6 py-8 text-center">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30">
           <svg
-            className="h-8 w-8 text-green-600"
+            className="h-8 w-8 text-green-600 dark:text-green-400"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -112,16 +112,16 @@ export default function LeadForm() {
           </svg>
         </div>
         <div>
-          <h2 className="text-xl font-semibold text-gray-900">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
             Thanks for reaching out!
           </h2>
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
             We&apos;ve received your message and will be in touch soon.
           </p>
         </div>
         <button
           onClick={handleReset}
-          className="text-sm font-medium text-indigo-600 underline-offset-2 hover:underline"
+          className="text-sm font-medium text-indigo-600 underline-offset-2 hover:underline dark:text-indigo-400"
         >
           Submit another response
         </button>
@@ -136,7 +136,7 @@ export default function LeadForm() {
       {globalError && (
         <div
           role="alert"
-          className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+          className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-800 dark:bg-red-900/20 dark:text-red-400"
         >
           {globalError}
         </div>
